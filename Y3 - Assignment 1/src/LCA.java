@@ -14,8 +14,8 @@ class Node {
 public class LCA {
 	
 	Node root;
-    private List<Integer> path1 = new ArrayList<>();
-    private List<Integer> path2 = new ArrayList<>();
+    private List<Integer> path1 = new ArrayList<Integer>();
+    private List<Integer> path2 = new ArrayList<Integer>();
  
     int findLCA(int n1, int n2) {
         path1.clear();
