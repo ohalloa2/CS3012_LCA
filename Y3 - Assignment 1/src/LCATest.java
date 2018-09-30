@@ -83,9 +83,21 @@ public class LCATest {
 	}
 	
 	@Test
-	public void testWhenOneNodeIsAncestorOfOther(){
-		
-		
+	public void testWhenOneNodeIsAncestorOfOther()
+	{
+		LCA ancestorNode = new LCA();
+		ancestorNode.root = new Node(19);
+		ancestorNode.root.left = new Node(16);
+		ancestorNode.root.right = new Node(4);
+		ancestorNode.root.left.left = new Node(2);
+		ancestorNode.root.left.right = new Node(8);
+		ancestorNode.root.right.left = new Node(3);
+        ancestorNode.root.right.right = new Node(91);
+        
+        //searching for ancestor of two nodes
+        assertEquals("LCA of 2 and 8: ",16,ancestorNode.findLCA(2, 8));
+        assertEquals("LCA of 3 and 91: ",4,ancestorNode.findLCA(3,99));
+        
 		
 	}
 	
