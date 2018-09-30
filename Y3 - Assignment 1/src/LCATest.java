@@ -4,13 +4,11 @@ import org.junit.Test;
 
 public class LCATest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 	
 	@Test 
 	public void testForEmptyTree(){
+		LCA treeEmpty = new LCA();
+		assertEquals("LCA(Empty)",-1,treeEmpty.findLCA(0, 0));
 	}
 	
 
