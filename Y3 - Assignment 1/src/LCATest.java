@@ -98,7 +98,11 @@ public class LCATest {
         assertEquals("LCA of 2 and 8: ",16,ancestorNode.findLCA(2, 8));
         assertEquals("LCA of 3 and 91: ",4,ancestorNode.findLCA(3,91));
         
-		
+        //test when one of the two nodes is the ancestor
+        assertEquals("LCA of 16 and 8: ",16,ancestorNode.findLCA(16, 8));
+        assertEquals("LCA of 19 and 91: ",19,ancestorNode.findLCA(19, 91));
+        assertEquals("LCA of 19 and 3: ",19,ancestorNode.findLCA(19, 3));
+        
 	}
 	
 	@Test
