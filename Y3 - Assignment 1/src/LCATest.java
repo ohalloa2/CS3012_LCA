@@ -77,6 +77,7 @@ public class LCATest {
 		testTree.root.right.left = new Node(6);
 		testTree.root.right.right = new Node(7);
 		
+		//failing
 		assertEquals("Find ancestors of non-existent nodes in populated tree: ", null, testTree.findLCA(67, 9));
 		assertEquals("Find ancestors of non-existent nodes in populated tree: ", null, testTree.findLCA(12, 19));	
 	}
