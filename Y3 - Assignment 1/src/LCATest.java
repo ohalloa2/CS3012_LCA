@@ -14,6 +14,9 @@ public class LCATest {
 
 	@Test
 	public void testForTreeSize1(){
+		LCA treeSize1 = new LCA();
+		treeSize1.root = new Node(1);
+		assertEquals("LCA(1,0)",-1,treeSize1.findLCA(1, 0));
 		
 	}
 	
