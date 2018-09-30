@@ -34,15 +34,35 @@ public class LCATest {
 		treeSize9.root.left.left.left = new Node(8);
 		treeSize9.root.left.left.right = new Node(9);
 		
-		assertEquals("LCA(1,3", 1, treeSize9.findLCA(1,3));
+		assertEquals("LCA(1,3)", 1, treeSize9.findLCA(1,3));
 		assertEquals("LCA(4,5)", 2,treeSize9.findLCA(4, 5));
 		assertEquals("LCA(8,9)", 4,treeSize9.findLCA(8, 9));
 		assertEquals("LCA(6,9)", 1, treeSize9.findLCA(6, 9));	
 	}
 	
 	@Test
-	public void testForTreeSize21(){
+	public void testForTreeSize13(){
 		
+		LCA treeSize21 = new LCA();
+		treeSize21.root = new Node(1);
+		treeSize21.root.left = new Node(2);
+		treeSize21.root.right = new Node(3);
+		treeSize21.root.left.left = new Node(4);
+		treeSize21.root.left.right = new Node(5);
+		treeSize21.root.right.left = new Node(6);
+		treeSize21.root.right.right = new Node(7);
+		treeSize21.root.left.left.left = new Node(8);
+		treeSize21.root.left.left.right = new Node(9);
+		treeSize21.root.left.right.left = new Node(10);
+		treeSize21.root.left.right.right = new Node(11);
+		treeSize21.root.right.left.left = new Node(12);
+		treeSize21.root.right.left.right = new Node(13);	
+	
+		assertEquals("LCA(1,12)", 1, treeSize21.findLCA(1,12));
+		assertEquals("LCA(2,3)", 1, treeSize21.findLCA(2,3));
+		assertEquals("LCA(12,13)", 6, treeSize21.findLCA(12,13));
+		assertEquals("LCA(8,9)", 4, treeSize21.findLCA(8,9));
+		assertEquals("LCA(4,13)", 1, treeSize21.findLCA(4,13));
 	}
 	
 	@Test
