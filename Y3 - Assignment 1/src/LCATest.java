@@ -112,6 +112,17 @@ public class LCATest {
 	@Test
 	public void testForALlSameNode(){
 		
+		LCA sameNode = new LCA();
+		sameNode.root = new Node(6);
+		sameNode.root.left = new Node(6);
+		sameNode.root.right = new Node(6);
+		sameNode.root.left.left = new Node(6);
+		sameNode.root.left.right = new Node(6);
+		sameNode.root.right.left = new Node(6);
+		sameNode.root.right.right = new Node(6);
+		
+		assertEquals("LCA of 6 and 6: ",6,sameNode.findLCA(6, 6));
+		
 	}
 	
 	
