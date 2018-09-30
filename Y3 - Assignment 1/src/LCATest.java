@@ -66,8 +66,19 @@ public class LCATest {
 	}
 	
 	@Test
-	public void testForNonExitingNodes(){
+	public void testForNonExitingNodes()
+	{
+		LCA testTree = new LCA();
+		testTree.root = new Node(1);
+		testTree.root.left = new Node(2);
+		testTree.root.right = new Node(3);
+		testTree.root.left.left = new Node(4);
+		testTree.root.left.right = new Node(5);
+		testTree.root.right.left = new Node(6);
+		testTree.root.right.right = new Node(7);
 		
+		assertEquals("Find ancestors of non-existent nodes in populated tree: ", null, testTree.findLCA(67, 9));
+		assertEquals("Find ancestors of non-existent nodes in populated tree: ", null, testTree.findLCA(12, 19));	
 	}
 	
 	@Test
@@ -79,4 +90,7 @@ public class LCATest {
 	public void testForALlSameNode(){
 		
 	}
+	
+	
+	
 }
