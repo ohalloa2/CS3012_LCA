@@ -37,7 +37,7 @@ public class LCATest {
 		assertEquals("LCA(1,3", 1, treeSize9.findLCA(1,3));
 		assertEquals("LCA(4,5)", 2,treeSize9.findLCA(4, 5));
 		assertEquals("LCA(8,9)", 4,treeSize9.findLCA(8, 9));
-		assertEquals("LCA(6,9)", 3, treeSize9.findLCA(6, 9));	
+		assertEquals("LCA(6,9)", 1, treeSize9.findLCA(6, 9));	
 	}
 	
 	@Test
