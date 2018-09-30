@@ -125,6 +125,16 @@ public class LCATest {
 		
 	}
 	
+	@Test 
+	public void unevenTree () { 
+		LCA unevenTree = new LCA();
+		unevenTree.root = new Node(1);
+		unevenTree.root.right = new Node(2);
+		unevenTree.root.right.right = new Node(3);
+		
+		assertEquals("Uneven tree with three nodes: ", 2, unevenTree.findLCA(2,3));	
+		assertEquals("Uneven tree with three nodes: ", 1, unevenTree.findLCA(3, 1));
+	}
 	
 	
 }
