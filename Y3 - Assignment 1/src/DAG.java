@@ -1,10 +1,25 @@
 import java.util.ArrayList;
 import java.util.List;
 
+class Node
+{
+	int data;
+	Node left;
+	Node right;
+	ArrayList <Node> ancestors;
+	
+	Node (int value) {
+		data = value;
+		left = right;
+		left = null;
+		right = null;
+		ancestors = null;
+	}
+	
+}
 
 public class DAG {
-	
-	Node root;
+
     private List<Integer> path1 = new ArrayList<Integer>();
     private List<Integer> path2 = new ArrayList<Integer>();
  
