@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/*class Node {
+class Node {
 	int data;
 	Node left;
 	Node right;
@@ -13,7 +13,7 @@ import java.util.List;
 		left = null;
 		right = null;
 	}
-}*/
+}
 
 public class LCA {
 	
