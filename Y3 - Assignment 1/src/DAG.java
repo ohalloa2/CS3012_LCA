@@ -53,9 +53,13 @@ public class DAG {
 		
 	public Iterable<Integer> adj(int v)
 	{ return adj[v]; }
+
 	
-	
-	
+	public int outdegree(int v)
+	{
+	    validateVertex(v);
+	    return adj[v].size();
+    }
 	
 	
 	public int LCA(int v, int w)
@@ -63,10 +67,10 @@ public class DAG {
 	return 0;	
 	}
 	
-	public ArrayList<Integer>bfs(int s)
-	{
+	//public ArrayList<Integer>bfs(int s)
+	//{
 		
-	}
+	//}
 	
 }
 
