@@ -33,21 +33,31 @@ public class DAG {
 	
 	public void addEdge(int v, int w)
 	{
-		validateVertex(v);
-	    validateVertex(w);
-	    adj[v].add(w);
-	    indegree[w]++;
-	    E++;
+		  if((validateVertex(v)>0)&&(validateVertex(w)>0))
+		    {
+		    	adj[v].add(w);
+		    	indegree[w]++;
+		    	E++;
+		    }
+		    else{
+		    	System.out.println("Please enter vertices between 0 & n-1");
+		    }
 	}
 	
-	private void validateVertex(int v) {
-        if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+	private int validateVertex(int v) {
+		if (v < 0 || v >= V)
+        	return -1;
+        else
+        	return 1;
     }
 
 	public int indegree(int v) {
-		validateVertex(v);
-        return indegree[v];
+		if(validateVertex(v)<0){
+			return -1;
+		}
+		else{
+			return indegree[v];
+		}
 
 	}
 		
@@ -57,10 +67,13 @@ public class DAG {
 	
 	public int outdegree(int v)
 	{
-	    validateVertex(v);
-	    return adj[v].size();
+		if(validateVertex(v)<0){
+			return -1;
+		}
+		else{
+			return adj[v].size();
+		}
     }
-	
 	
 	public int LCA(int v, int w)
 	{
