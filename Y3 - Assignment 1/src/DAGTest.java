@@ -22,17 +22,31 @@ public class DAGTest {
 			assertEquals("",ans, test.adj(1).toString());
 		}
 		
-		/*@Test(expected=Exception.class)
+		@Test
+		public void testAddEdge(){
+			DAG test1 = new DAG(5);
+			test1.addEdge(3, 9);
+			test1.addEdge(-2, -5);	
+		}
+		
+		@Test
+		public void testinDegree(){
+			DAG test2 = new DAG(5);
+			assertEquals("", -1, test2.indegree(-3));
+		}
+		
+		@Test
+		public void testOutDegree(){
+			DAG test3 = new DAG(5);
+			assertEquals("", -1, test3.outdegree(8));	
+		}
+		
+		
+		@Test(expected=Exception.class)
 		public void exceptionTest(){
-			
-			DAG test3 = new DAG(-7);
-			
-			//DAG test4 = new DAG(5);
-			//Can't add an edge to a vertices > V(5)
-			//test4.addEdge(3, 9);
-			//test4.addEdge(-2, 3);
-			//test4.addEdge(0, 5);		
-		}*/
+			//Can't make a directed graph with less than 0 vertices
+			DAG test4 = new DAG(-5);
+		}
 		
 		
 	@Test 
