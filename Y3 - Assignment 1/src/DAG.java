@@ -8,7 +8,9 @@ public class DAG {
 	private ArrayList<Integer>[] adj;    // adj[v] is the adjacency list for vertex v
 	private int[] indegree;        // indegree[v] is the indegree of vertex v
 	private boolean[] marked;		// boolean list which keeps track of visited vertices
-
+	private boolean hasCycle;       //boolean tests if cycle in graph (true) or not(false)
+	
+	
 	public DAG(int V)
 	{
 		if (V < 0) throw new IllegalArgumentException("The number of vertices in a digraph must be non-negative");
@@ -60,11 +62,7 @@ public class DAG {
 		}
 
 	}
-		
-	public Iterable<Integer> adj(int v)
-	{ return adj[v]; }
 
-	
 	public int outdegree(int v)
 	{
 		if(validateVertex(v)<0){
@@ -75,10 +73,17 @@ public class DAG {
 		}
     }
 	
-	public int LCA(int v, int w)
-	{
-	return 0;	
-	}
+	public Iterable<Integer> adj(int v)
+	{ return adj[v]; }
+	
+	public boolean hasCycle() {
+		return true;
+    }
+	
+	public void findCycle(int v) {
+		 
+	 }
+	
 	
 	//public ArrayList<Integer>bfs(int s)
 	//{
