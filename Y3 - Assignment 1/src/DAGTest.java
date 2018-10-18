@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DAGTest {
 	
-	//Following tests check Directed Graph class works correctly
+	//Check Directed Graph class works correctly
 		@Test
 		public void testForDirectedGraph(){
 			DAG test = new DAG(10);
@@ -46,6 +46,25 @@ public class DAGTest {
 		public void exceptionTest(){
 			//Can't make a directed graph with less than 0 vertices
 			DAG test4 = new DAG(-5);
+		}
+		
+		//Check Directed Acyclic Graph class works correctly
+		@Test
+		public void testsForCycle(){
+				DAG cyclic = new DAG(5);
+				cyclic.addEdge(0, 1);
+				cyclic.addEdge(1, 2);
+				cyclic.addEdge(2, 0);
+				assertTrue(cyclic.hasCycle());
+		}
+		
+		@Test
+		public void testForAcyclicGraph(){
+				DAG acyclic = new DAG(5);
+				acyclic.addEdge(0, 1);
+				acyclic.addEdge(1, 2);
+				acyclic.addEdge(2, 3);
+				assertFalse(acyclic.hasCycle());
 		}
 		
 		
