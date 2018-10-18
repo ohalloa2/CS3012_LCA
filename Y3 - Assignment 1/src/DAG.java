@@ -9,7 +9,7 @@ public class DAG {
 	private int[] indegree;        // indegree[v] is the indegree of vertex v
 	private boolean[] marked;		// boolean list which keeps track of visited vertices
 	private boolean hasCycle;       //boolean tests if cycle in graph (true) or not(false)
-	
+	private boolean stack[];		//boolean list which keeps track of vertices that were visited
 	
 	public DAG(int V)
 	{
@@ -77,11 +77,24 @@ public class DAG {
 	{ return adj[v]; }
 	
 	public boolean hasCycle() {
-		return true;
+		return hasCycle;
     }
 	
 	public void findCycle(int v) {
-		 
+		
+	     marked[v] = true;
+	        stack[v] = true;
+
+	        for (int w : adj(v)) {
+	            if(!marked[w]) {
+	                findCycle(w);
+	            } else if (stack[w]) {
+	                hasCycle = true;
+	                return;
+	            }
+	        }
+
+	        stack[v] = false;		 
 	 }
 	
 	
