@@ -9,9 +9,26 @@ public class DAG {
 	private int[] indegree;        // indegree[v] is the indegree of vertex v
 	private boolean[] marked;		// boolean list which keeps track of visited vertices
 
+	public DAG(int V)
+	{
+		if (V < 0) throw new IllegalArgumentException("The number of vertices in a digraph must be non-negative");
+	    this.V = V;
+	    this.E = 0;
+	    indegree = new int[V];
+	    adj = (ArrayList<Integer>[]) new ArrayList[V];
+	    for (int v = 0; v < V; v++) {
+	        adj[v] = new ArrayList<Integer>();
+	    }
+	}
+	
 	public int V()
 	{
-		return 0 ;
+		return V ;
+	}
+	
+	public int E()
+	{
+		return E;
 	}
 	
 	public void addEdge(int v, int w)
@@ -38,10 +55,7 @@ public class DAG {
 	{ return adj[v]; }
 	
 	
-	public int E()
-	{
-		return 0;
-	}
+	
 	
 	
 	public int LCA(int v, int w)
