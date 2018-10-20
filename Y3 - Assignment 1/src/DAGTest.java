@@ -67,6 +67,30 @@ public class DAGTest {
 				assertFalse(acyclic.hasCycle());
 		}
 		
+		@Test
+		public void testLCA(){
+			DAG lca = new DAG(8);
+			
+			//--------2---5----7--
+			//---0--1-------6----8
+			//--------3---4-------
+			lca.addEdge(0, 1);
+			lca.addEdge(1, 2);
+			lca.addEdge(1, 3);
+			lca.addEdge(2, 5);
+			lca.addEdge(3, 4);
+			lca.addEdge(4, 6);
+			lca.addEdge(5, 6);
+			lca.addEdge(6, 8);
+			lca.addEdge(5, 7);
+			lca.addEdge(7, 8);
+			
+			assertEquals("", 1, lca.findLCA(5, 4));
+			assertEquals("", 5, lca.findLCA(7, 8));
+			assertEquals("", 4, lca.findLCA(6, 4));
+		}
+		
+		
 		
 	@Test 
 	public void testE()
@@ -79,12 +103,7 @@ public class DAGTest {
 	{
 		
 	}
-	
-	@Test 
-	public void testLCA ()
-	{
-		
-	}
+
 	
 	
 	

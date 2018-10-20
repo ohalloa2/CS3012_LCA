@@ -98,6 +98,26 @@ public class DAG {
 	 }
 	
 	
+	public int findLCA(int v, int w)
+	{
+		findCycle(0);
+		if(hasCycle)
+		{
+			return -1; //Graph not a DAG
+		}
+		
+		if(validateVertex(v)<0||validateVertex(v)<0)
+		{
+			return -1; //Vertices are not valid
+		}
+		
+		if(E==0)
+		{
+			return -1;  //Graph is empty (no edges)
+		}
+		return 0;
+	}
+	
 	//public ArrayList<Integer>bfs(int s)
 	//{
 		
