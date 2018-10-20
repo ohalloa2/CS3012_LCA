@@ -149,11 +149,17 @@ public class DAG {
 	        }
 	        return order;
 	    }
-	
-	//public ArrayList<Integer>bfs(int s)
-	//{
-		
-	//}
+	 
+	 public DAG reverse() 
+	 {
+	        DAG reversedDAG = new DAG(V);
+	        for (int v = 0; v < V; v++) {
+	            for (int w : adj(v)) {
+	                reversedDAG.addEdge(w, v);
+	            }
+	        }
+	        return reversedDAG;
+	    }
 	
 }
 
