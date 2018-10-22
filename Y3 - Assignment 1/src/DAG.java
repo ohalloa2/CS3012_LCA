@@ -13,16 +13,20 @@ public class DAG {
 	private boolean hasCycle;       //boolean tests if cycle in graph (true) or not(false)
 	private boolean stack[];		//boolean list which keeps track of vertices that were visited
 
+
 	public DAG(int V)
 	{
-		if (V < 0) throw new IllegalArgumentException("The number of vertices in a digraph must be non-negative");
+		if (V < 0) throw new IllegalArgumentException("The number of vertices in a digraph must be nonnegative");
 		this.V = V;
 		this.E = 0;
 		indegree = new int[V];
+		marked = new boolean[V];
+		stack = new boolean[V];
 		adj = (ArrayList<Integer>[]) new ArrayList[V];
-		for (int v = 0; v < V; v++) {
+		for (int v = 0; v < V; v++) 
+		{
 			adj[v] = new ArrayList<Integer>();
-		}
+		}              
 	}
 
 	public int V()
@@ -35,70 +39,92 @@ public class DAG {
 		return E;
 	}
 
+
+
+
 	public void addEdge(int v, int w)
 	{
-	    if((validateVertex(v)>0)&&(validateVertex(w)>0))
-	    {
-	    	adj[v].add(w);
-	    	indegree[w]++;
-	    	E++;
-	    }
-	    else
-	    {
-	    	System.out.println("Please enter vertices between 0 & n-1");
-	    }
-	    	
-	}
-
-	private int validateVertex(int v) {
-		if (v < 0 || v >= V)
-			return -1;
+		if((validateVertex(v)>0)&&(validateVertex(w)>0))
+		{
+			adj[v].add(w);
+			indegree[w]++;
+			E++;
+		}
 		else
-			return 1;
+		{
+			System.out.println("Please enter vertices between 0 and n-1");
+		}
+
 	}
 
-	public int indegree(int v) {
-		if(validateVertex(v)<0){
+	private int validateVertex(int v) 
+	{
+		if (v < 0 || v >= V)
+		{
 			return -1;
 		}
-		else{
+
+		else
+		{
+			return 1;
+		}
+
+	}
+
+	public int indegree(int v) 
+	{
+		if(validateVertex(v)<0)
+		{
+			return -1;
+		}
+		else
+		{
 			return indegree[v];
 		}
-
 	}
 
-	public int outdegree(int v)
+	public int outdegree(int v) 
 	{
-		if(validateVertex(v)<0){
+		if(validateVertex(v)<0)
+		{
 			return -1;
 		}
-		else{
+		else
+		{
 			return adj[v].size();
 		}
 	}
 
 	public Iterable<Integer> adj(int v)
-	{ return adj[v]; }
+	{ 
+		return adj[v]; 
+	}
 
-	public boolean hasCycle() {
+
+	public boolean hasCycle() 
+	{
 		return hasCycle;
 	}
 
-	public void findCycle(int v) {
-
+	public void findCycle(int v) 
+	{
 		marked[v] = true;
 		stack[v] = true;
 
-		for (int w : adj(v)) {
-			if(!marked[w]) {
+		for (int w : adj(v))
+		{
+			if(!marked[w]) 
+			{
 				findCycle(w);
-			} else if (stack[w]) {
+			} 
+			else if (stack[w]) 
+			{
 				hasCycle = true;
 				return;
 			}
 		}
 
-		stack[v] = false;		 
+		stack[v] = false;
 	}
 
 
@@ -109,40 +135,37 @@ public class DAG {
 		{
 			return -1;
 		}
-		DAG backwards = reverse();
-		ArrayList<Integer> array1 = backwards.BFS(v);
-		ArrayList<Integer> array2 = backwards.BFS(w);
-		ArrayList<Integer> commonAncest = new ArrayList<Integer>();
-		boolean found = false;
-		for(int i = 0; i<array1.size(); i++)
+		if(validateVertex(v)<0||validateVertex(v)<0)
 		{
-				for(int b = 0; b<array2.size(); b++)
-				{		
-					if(array1.get(i)==array2.get(b))
-					{
-						commonAncest.add(array1.get(i));	
-						found = true;
-					}
+			return -1;
+		}
+		if(E==0)
+		{
+			return -1;
+		}
+
+		DAG backwards = reverse();
+		ArrayList<Integer> arr1 = backwards.BFS(v);
+		ArrayList<Integer> arr2 = backwards.BFS(w);
+		ArrayList<Integer> commonAncestors = new ArrayList<Integer>();
+		boolean found = false;
+		for(int i = 0; i<arr1.size(); i++)
+		{
+			for(int t = 0; t<arr2.size(); t++)
+			{		
+				if(arr1.get(i)==arr2.get(t))
+				{
+					commonAncestors.add(arr1.get(i));	
+					found = true;
+				}
 			}
 		}
 		if(found)
-		{
-			return commonAncest.get(0);
-			}
+			return commonAncestors.get(0);
 		else
-		{
 			return -1;
-			}	
 	}
-	
-	
-	
-	  
-	 
-	
-	
-	
-	
+
 
 	public ArrayList<Integer> BFS(int s)
 	{
@@ -169,20 +192,23 @@ public class DAG {
 					queue.add(n);
 				}
 			}
-		}
-		return order;
+		} 
+		return order;   
 	}
 
 	public DAG reverse() 
 	{
-		DAG reversedDAG = new DAG(V);
-		for (int v = 0; v < V; v++) {
-			for (int w : adj(v)) {
-				reversedDAG.addEdge(w, v);
+		DAG reverse = new DAG(V);
+		for (int v = 0; v < V; v++)
+		{
+			for (int w : adj(v))
+			{
+				reverse.addEdge(w, v);
 			}
 		}
-		return reversedDAG;
+		return reverse;
 	}
+
 
 }
 
