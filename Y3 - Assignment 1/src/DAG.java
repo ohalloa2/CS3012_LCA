@@ -43,7 +43,8 @@ public class DAG {
 	    	indegree[w]++;
 	    	E++;
 	    }
-	    else{
+	    else
+	    {
 	    	System.out.println("Please enter vertices between 0 & n-1");
 	    }
 	    	
@@ -103,22 +104,6 @@ public class DAG {
 
 	public int findLCA(int v, int w)
 	{
-		findCycle(0);
-		if(hasCycle)
-		{
-			return -1; //Graph not a DAG
-		}
-
-		if(validateVertex(v)<0||validateVertex(v)<0)
-		{
-			return -1; //Vertices are not valid
-		}
-
-		if(E==0)
-		{
-			return -1;  //Graph is empty (no edges)
-		}
-
 		DAG backwards = reverse();
 		ArrayList<Integer> array1 = backwards.BFS(v);
 		ArrayList<Integer> array2 = backwards.BFS(w);
@@ -126,25 +111,35 @@ public class DAG {
 		boolean found = false;
 		for(int i = 0; i<array1.size(); i++)
 		{
-			for(int b = 0; b<array2.size(); b++)
-			{ 
-				if(array1.get(i)==array2.get(b))
-				{
-					commonAncest.add(array1.get(i)); 
-					found = true;
-				}
+				for(int b = 0; b<array2.size(); b++)
+				{		
+					if(array1.get(i)==array2.get(b))
+					{
+						commonAncest.add(array1.get(i));	
+						found = true;
+					}
 			}
 		}
+		
 		if(found)
 		{
 			return commonAncest.get(0);
-		}	
+			}
 		else
 		{
-			return -1;	
-		}
+			return -1;
+			}
 		
 	}
+	
+	
+	
+	  
+	 
+	
+	
+	
+	
 
 	public ArrayList<Integer> BFS(int s)
 	{
