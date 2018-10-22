@@ -104,6 +104,11 @@ public class DAG {
 
 	public int findLCA(int v, int w)
 	{
+		findCycle(0);
+		if(hasCycle)
+		{
+			return -1;
+		}
 		DAG backwards = reverse();
 		ArrayList<Integer> array1 = backwards.BFS(v);
 		ArrayList<Integer> array2 = backwards.BFS(w);
@@ -120,7 +125,6 @@ public class DAG {
 					}
 			}
 		}
-		
 		if(found)
 		{
 			return commonAncest.get(0);
@@ -128,8 +132,7 @@ public class DAG {
 		else
 		{
 			return -1;
-			}
-		
+			}	
 	}
 	
 	
